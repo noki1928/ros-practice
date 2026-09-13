@@ -1,0 +1,457 @@
+
+   ACTION LIST
+action                 : none
+action server count    : 0
+action client count    : 0
+
+   ROS ENVIRONMENT
+ROS environment variables        : ROS_AUTOMATIC_DISCOVERY_RANGE=SUBNET, ROS_DISTRO=lyrical
+rcutils environment variables    : 
+rmw environment variables        : 
+
+   NETWORK CONFIGURATION
+inet         : 127.0.0.1
+inet4        : ['127.0.0.1']
+inet6        : ['::1']
+netmask      : 255.0.0.0
+device       : lo
+flags        : UP,LOOPBACK,RUNNING
+mtu          : 65536
+inet         : 192.168.0.160
+inet4        : ['192.168.0.160']
+ether        : 38:d5:7a:e5:ea:bb
+inet6        : ['fe80::7fda:a98e:9964:7fd6%wlan0']
+netmask      : 255.255.255.0
+device       : wlan0
+flags        : UP,BROADCAST,RUNNING,MULTICAST
+mtu          : 1500
+broadcast    : 192.168.0.255
+inet         : 172.17.0.1
+inet4        : ['172.17.0.1']
+ether        : aa:0c:ea:2f:04:e5
+netmask      : 255.255.0.0
+device       : docker0
+flags        : UP,BROADCAST,MULTICAST
+mtu          : 1500
+broadcast    : 172.17.255.255
+inet         : 172.18.0.1
+inet4        : ['172.18.0.1']
+ether        : 82:a6:ba:65:75:a0
+netmask      : 255.255.0.0
+device       : br-984a2127b7d5
+flags        : UP,BROADCAST,MULTICAST
+mtu          : 1500
+broadcast    : 172.18.255.255
+inet         : 100.107.95.90
+inet4        : ['100.107.95.90']
+netmask      : 255.255.0.0
+device       : wt0
+flags        : UP,POINTOPOINT,RUNNING,NOARP
+mtu          : 1280
+inet         : 10.8.1.3
+inet4        : ['10.8.1.3']
+inet6        : ['fd58:baa6:dead::1', 'fe80::8728:59e1:f268:9bcb%amn0']
+netmask      : 255.255.255.255
+device       : amn0
+flags        : UP,POINTOPOINT,NOTRAILERS,RUNNING,PROMISC
+mtu          : 1376
+
+   PACKAGE VERSIONS
+marine_acoustic_msgs                      : latest=2.1.0, local=2.1.0
+gps_msgs                                  : latest=3.1.1, local=3.1.1
+gz_transport_vendor                       : latest=0.3.5, local=0.3.5
+ros_gz_bridge                             : latest=3.0.10, local=3.0.10
+gz_msgs_vendor                            : latest=0.3.4, local=0.3.4
+actuator_msgs                             : latest=0.0.1, local=0.0.1
+vision_msgs                               : latest=4.2.0, local=4.2.0
+gz_tools_vendor                           : latest=0.2.2, local=0.2.2
+ros_gz_interfaces                         : latest=3.0.10, local=3.0.10
+ament_xmllint                             : latest=0.20.6, local=0.20.6
+point_cloud_transport                     : latest=5.4.3, local=5.4.3
+nav_msgs                                  : latest=5.9.3, local=5.9.3
+test_interface_files                      : latest=0.14.1, local=0.14.1
+yaml_cpp_vendor                           : latest=9.2.1, local=9.2.1
+rcl_logging_implementation                : latest=3.4.1, local=3.4.1
+rcl                                       : latest=10.4.5, local=10.4.5
+point_cloud_transport_py                  : latest=5.4.3, local=5.4.3
+ament_cmake_version                       : latest=2.8.8, local=2.8.8
+rqt_gui_py                                : latest=1.10.6, local=1.10.6
+rosbag2_examples_py                       : latest=0.33.3, local=0.33.3
+tf2_py                                    : latest=0.45.9, local=0.45.9
+examples_rclcpp_minimal_service           : latest=0.21.5, local=0.21.5
+quality_of_service_demo_py                : latest=0.37.9, local=0.37.9
+ament_cmake_export_link_flags             : latest=2.8.8, local=2.8.8
+test_tracetools_launch                    : latest=N/A, local=8.10.2
+rmw_connextddsmicro                       : latest=N/A, local=1.2.7
+ros2test                                  : latest=0.9.1, local=0.9.1
+resource_retriever_service                : latest=0.0.3, local=0.0.3
+resource_retriever                        : latest=3.9.3, local=3.9.3
+rviz2                                     : latest=15.2.6, local=15.2.6
+tf2_tools                                 : latest=0.45.9, local=0.45.9
+ament_lint                                : latest=0.20.6, local=0.20.6
+ament_copyright                           : latest=0.20.6, local=0.20.6
+urdf_parser_plugin                        : latest=2.13.2, local=2.13.2
+ament_cppcheck                            : latest=0.20.6, local=0.20.6
+rosidl_typesupport_interface              : latest=5.2.1, local=5.2.1
+composition_interfaces                    : latest=2.4.5, local=2.4.5
+test_rosidl_buffer                        : latest=N/A, local=0.25.3
+rviz_rendering_tests                      : latest=15.2.6, local=15.2.6
+action_msgs                               : latest=2.4.5, local=2.4.5
+tracetools_read                           : latest=8.10.2, local=8.10.2
+zenoh_cpp_vendor                          : latest=0.10.5, local=0.10.5
+examples_rclcpp_minimal_subscriber        : latest=0.21.5, local=0.21.5
+sensor_msgs                               : latest=5.9.3, local=5.9.3
+rclcpp_lifecycle                          : latest=32.0.3, local=32.0.3
+rosidl_generator_py                       : latest=0.27.2, local=0.27.2
+examples_rclpy_executors                  : latest=0.21.5, local=0.21.5
+rosidl_runtime_cpp                        : latest=5.2.1, local=5.2.1
+tf2                                       : latest=0.45.9, local=0.45.9
+rosidl_buffer_backend_registry            : latest=5.2.1, local=5.2.1
+ament_cmake_clang_format                  : latest=0.20.6, local=0.20.6
+ros2cli_common_extensions                 : latest=0.5.2, local=0.5.2
+rcl_interfaces                            : latest=2.4.5, local=2.4.5
+launch_testing_ros                        : latest=0.29.9, local=0.29.9
+rmw_implementation_cmake                  : latest=7.10.2, local=7.10.2
+unique_identifier_msgs                    : latest=2.8.1, local=2.8.1
+rviz_visual_testing_framework             : latest=15.2.6, local=15.2.6
+rcl_logging_noop                          : latest=3.4.1, local=3.4.1
+ros2pkg                                   : latest=0.40.9, local=0.40.9
+urdf                                      : latest=2.13.2, local=2.13.2
+ament_index_cpp                           : latest=1.13.3, local=1.13.3
+intra_process_demo                        : latest=0.37.9, local=0.37.9
+ament_cmake_xmllint                       : latest=0.20.6, local=0.20.6
+image_transport                           : latest=6.4.10, local=6.4.10
+rqt_gui                                   : latest=1.10.6, local=1.10.6
+ament_package                             : latest=0.18.3, local=0.18.3
+qt_gui_app                                : latest=2.11.1, local=2.11.1
+composition                               : latest=0.37.9, local=0.37.9
+rosbag2_storage_default_plugins           : latest=0.33.3, local=0.33.3
+rosbag2_tests                             : latest=0.33.3, local=0.33.3
+rviz_ogre_vendor                          : latest=15.2.6, local=15.2.6
+ament_uncrustify                          : latest=0.20.6, local=0.20.6
+lttngpy                                   : latest=8.10.2, local=8.10.2
+tf2_geometry_msgs                         : latest=0.45.9, local=0.45.9
+tango_icons_vendor                        : latest=0.5.1, local=0.5.1
+logging_demo                              : latest=0.37.9, local=0.37.9
+rclpy                                     : latest=10.0.11, local=10.0.11
+ros2doctor                                : latest=0.40.9, local=0.40.9
+tf2_ros_py                                : latest=0.45.9, local=0.45.9
+trajectory_msgs                           : latest=5.9.3, local=5.9.3
+rosidl_default_generators                 : latest=1.8.1, local=1.8.1
+interactive_markers                       : latest=2.8.4, local=2.8.4
+rosidl_generator_rs                       : latest=0.5.0, local=0.5.0
+rti_connext_dds_cmake_module              : latest=1.2.7, local=1.2.7
+rosidl_generator_type_description         : latest=5.2.1, local=5.2.1
+rclcpp                                    : latest=32.0.3, local=32.0.3
+rqt_topic                                 : latest=2.1.2, local=2.1.2
+rqt_bag                                   : latest=2.2.5, local=2.2.5
+rosidl_core_generators                    : latest=0.4.3, local=0.4.3
+ros2multicast                             : latest=0.40.9, local=0.40.9
+lifecycle_msgs                            : latest=2.4.5, local=2.4.5
+launch_xml                                : latest=3.9.8, local=3.9.8
+test_security                             : latest=N/A, local=0.25.3
+ament_cmake_pytest                        : latest=2.8.8, local=2.8.8
+ament_cmake_gmock                         : latest=2.8.8, local=2.8.8
+rmw_connextdds_common                     : latest=1.2.7, local=1.2.7
+examples_rclpy_minimal_action_server      : latest=0.21.5, local=0.21.5
+ament_cmake_pclint                        : latest=0.20.6, local=0.20.6
+ros_testing                               : latest=0.9.1, local=0.9.1
+launch_yaml                               : latest=3.9.8, local=3.9.8
+rosidl_typesupport_fastrtps_cpp           : latest=3.9.5, local=3.9.6
+dummy_map_server                          : latest=0.37.9, local=0.37.9
+launch_testing                            : latest=3.9.8, local=3.9.8
+ament_cmake                               : latest=2.8.8, local=2.8.8
+image_tools                               : latest=0.37.9, local=0.37.9
+geometry_msgs                             : latest=5.9.3, local=5.9.3
+turtlesim                                 : latest=1.10.9, local=1.10.9
+lifecycle                                 : latest=0.37.9, local=0.37.9
+resource_retriever_interfaces             : latest=0.0.3, local=0.0.3
+std_msgs                                  : latest=5.9.3, local=5.9.3
+rosbag2_performance_benchmarking          : latest=0.33.3, local=0.33.3
+rosbag2_test_msgdefs                      : latest=0.33.3, local=0.33.3
+examples_rclcpp_wait_set                  : latest=0.21.5, local=0.21.5
+stereo_msgs                               : latest=5.9.3, local=5.9.3
+ament_lint_common                         : latest=0.20.6, local=0.20.6
+examples_rclcpp_minimal_publisher         : latest=0.21.5, local=0.21.5
+rosbag2_transport                         : latest=0.33.3, local=0.33.3
+libyaml_vendor                            : latest=1.8.1, local=1.8.1
+rosidl_buffer_py                          : latest=5.2.1, local=5.2.1
+test_launch_testing                       : latest=N/A, local=3.9.8
+examples_rclpy_minimal_service            : latest=0.21.5, local=0.21.5
+rmw_zenoh_cpp                             : latest=0.10.5, local=0.10.5
+ament_cmake_export_targets                : latest=2.8.8, local=2.8.8
+ros2lifecycle                             : latest=0.40.9, local=0.40.9
+rttest                                    : latest=0.20.1, local=0.20.1
+mimick_vendor                             : latest=0.9.0, local=0.9.0
+rosidl_typesupport_fastrtps_c             : latest=3.9.5, local=3.9.6
+mcap_vendor                               : latest=0.33.3, local=0.33.3
+rqt_console                               : latest=2.4.4, local=2.4.4
+ament_cmake_include_directories           : latest=2.8.8, local=2.8.8
+ament_cmake_cppcheck                      : latest=0.20.6, local=0.20.6
+examples_tf2_py                           : latest=0.45.9, local=0.45.9
+test_rclcpp                               : latest=N/A, local=0.25.3
+rmw_fastrtps_dynamic_cpp                  : latest=9.4.9, local=9.4.9
+robot_state_publisher                     : latest=3.5.6, local=3.5.6
+rqt_plot                                  : latest=1.7.6, local=1.7.6
+qt_gui_py_common                          : latest=2.11.1, local=2.11.1
+camera_info_manager                       : latest=6.4.10, local=6.4.10
+rosidl_dynamic_typesupport_fastrtps       : latest=0.5.1, local=0.5.1
+examples_rclcpp_minimal_action_server     : latest=0.21.5, local=0.21.5
+examples_rclpy_minimal_subscriber         : latest=0.21.5, local=0.21.5
+pendulum_control                          : latest=0.37.9, local=0.37.9
+rosidl_adapter                            : latest=5.2.1, local=5.2.1
+examples_rclpy_minimal_publisher          : latest=0.21.5, local=0.21.5
+sros2                                     : latest=0.16.6, local=0.16.6
+dummy_robot_bringup                       : latest=0.37.9, local=0.37.9
+service_msgs                              : latest=2.4.5, local=2.4.5
+rqt_bag_plugins                           : latest=2.2.5, local=2.2.5
+builtin_interfaces                        : latest=2.4.5, local=2.4.5
+ament_pep257                              : latest=0.20.6, local=0.20.6
+python_qt_binding                         : latest=2.5.5, local=2.5.5
+test_tracetools                           : latest=N/A, local=8.10.2
+camera_calibration_parsers                : latest=6.4.10, local=6.4.10
+rmw_connextdds                            : latest=1.2.7, local=1.2.7
+zstd_cmake_module                         : latest=0.33.3, local=0.33.3
+ament_cmake_export_definitions            : latest=2.8.8, local=2.8.8
+rosbag2_test_common                       : latest=0.33.3, local=0.33.3
+rosidl_typesupport_tests                  : latest=N/A, local=3.4.2
+launch_pytest                             : latest=3.9.8, local=3.9.8
+rosidl_buffer                             : latest=5.2.1, local=5.2.1
+rosbag2_py                                : latest=0.33.3, local=0.33.3
+test_cli                                  : latest=N/A, local=0.25.3
+rosidl_cli                                : latest=5.2.1, local=5.2.1
+rcl_action                                : latest=10.4.5, local=10.4.5
+statistics_msgs                           : latest=2.4.5, local=2.4.5
+quality_of_service_demo_cpp               : latest=0.37.9, local=0.37.9
+examples_rclcpp_async_client              : latest=0.21.5, local=0.21.5
+test_quality_of_service                   : latest=N/A, local=0.25.3
+ament_cmake_lint_cmake                    : latest=0.20.6, local=0.20.6
+ament_cmake_ros                           : latest=0.15.8, local=0.15.8
+examples_rclcpp_minimal_client            : latest=0.21.5, local=0.21.5
+ros2cli_test_interfaces                   : latest=0.40.9, local=0.40.9
+launch_testing_examples                   : latest=0.21.5, local=0.21.5
+keyboard_handler                          : latest=0.5.1, local=0.5.1
+rosidl_typesupport_introspection_c        : latest=5.2.1, local=5.2.1
+kdl_parser                                : latest=3.0.1, local=3.0.1
+laser_geometry                            : latest=2.11.3, local=2.11.3
+ament_cmake_google_benchmark              : latest=2.8.8, local=2.8.8
+ros2node                                  : latest=0.40.9, local=0.40.9
+ament_cmake_export_include_directories    : latest=2.8.8, local=2.8.8
+rosbag2_compression                       : latest=0.33.3, local=0.33.3
+lifecycle_py                              : latest=0.37.9, local=0.37.9
+rmw_test_fixture                          : latest=0.15.8, local=0.15.8
+test_launch_ros                           : latest=N/A, local=0.29.9
+test_tf2                                  : latest=N/A, local=0.45.9
+uncrustify_vendor                         : latest=3.2.0, local=3.2.0
+rcl_logging_interface                     : latest=3.4.1, local=3.4.1
+pluginlib                                 : latest=5.8.5, local=5.8.5
+rmw_cyclonedds_cpp                        : latest=4.1.5, local=4.1.5
+tracetools_test                           : latest=8.10.2, local=8.10.2
+test_communication                        : latest=N/A, local=0.25.3
+ament_cmake_python_test                   : latest=N/A, local=2.8.8
+tf2_bullet                                : latest=0.45.9, local=0.45.9
+ament_cmake_export_libraries              : latest=2.8.8, local=2.8.8
+ament_cpplint                             : latest=0.20.6, local=0.20.6
+rcl_lifecycle                             : latest=10.4.5, local=10.4.5
+launch                                    : latest=3.9.8, local=3.9.8
+qt_gui                                    : latest=2.11.1, local=2.11.1
+map_msgs                                  : latest=2.6.1, local=2.6.1
+type_description_interfaces               : latest=2.4.5, local=2.4.5
+rosidl_core_runtime                       : latest=0.4.3, local=0.4.3
+rqt_srv                                   : latest=1.4.1, local=1.4.1
+examples_rclpy_guard_conditions           : latest=0.21.5, local=0.21.5
+message_filters                           : latest=7.4.2, local=7.4.2
+ament_cmake_gen_version_h                 : latest=2.8.8, local=2.8.8
+ament_cmake_cpplint                       : latest=0.20.6, local=0.20.6
+test_rmw_zenoh_cpp                        : latest=N/A, local=0.10.5
+rosidl_generator_cpp                      : latest=5.2.1, local=5.2.1
+rviz_rendering                            : latest=15.2.6, local=15.2.6
+rmw_implementation                        : latest=3.1.6, local=3.1.6
+ament_pclint                              : latest=0.20.6, local=0.20.6
+ros2interface                             : latest=0.40.9, local=0.40.9
+ament_cmake_test                          : latest=2.8.8, local=2.8.8
+examples_rclcpp_minimal_composition       : latest=0.21.5, local=0.21.5
+gz_cmake_vendor                           : latest=0.4.5, local=0.4.5
+rosidl_buffer_backend                     : latest=5.2.1, local=5.2.1
+ament_cmake_libraries                     : latest=2.8.8, local=2.8.8
+examples_rclpy_minimal_action_client      : latest=0.21.5, local=0.21.5
+spdlog_vendor                             : latest=1.8.0, local=1.8.0
+rclcpp_action                             : latest=32.0.3, local=32.0.3
+rmw                                       : latest=7.10.2, local=7.10.2
+ament_pycodestyle                         : latest=0.20.6, local=0.20.6
+ament_cmake_gtest                         : latest=2.8.8, local=2.8.8
+rosbag2_storage_mcap                      : latest=0.33.3, local=0.33.3
+ament_cmake_pycodestyle                   : latest=0.20.6, local=0.20.6
+domain_coordinator                        : latest=0.15.8, local=0.15.8
+geometry2                                 : latest=0.45.9, local=0.45.9
+tf2_msgs                                  : latest=0.45.9, local=0.45.9
+rosgraph_msgs                             : latest=2.4.5, local=2.4.5
+diagnostic_msgs                           : latest=5.9.3, local=5.9.3
+pendulum_msgs                             : latest=0.37.9, local=0.37.9
+common_interfaces                         : latest=5.9.3, local=5.9.3
+ros2service                               : latest=0.40.9, local=0.40.9
+rosbag2_interfaces                        : latest=0.33.3, local=0.33.3
+action_tutorials_py                       : latest=0.37.9, local=0.37.9
+examples_rclcpp_multithreaded_executor    : latest=0.21.5, local=0.21.5
+rosidl_runtime_py                         : latest=0.15.2, local=0.15.2
+rosidl_typesupport_introspection_tests    : latest=N/A, local=5.2.1
+rosbag2_performance_benchmarking_msgs     : latest=0.33.3, local=0.33.3
+ros2plugin                                : latest=5.8.5, local=5.8.5
+rpyutils                                  : latest=0.7.2, local=0.7.2
+tf2_kdl                                   : latest=0.45.9, local=0.45.9
+ros2trace                                 : latest=8.10.2, local=8.10.2
+rosidl_default_runtime                    : latest=1.8.1, local=1.8.1
+ament_flake8                              : latest=0.20.6, local=0.20.6
+rqt_reconfigure                           : latest=1.8.6, local=1.8.6
+ament_lint_cmake                          : latest=0.20.6, local=0.20.6
+rcpputils                                 : latest=2.14.5, local=2.14.5
+rosidl_runtime_c                          : latest=5.2.1, local=5.2.1
+rmw_security_common                       : latest=7.10.2, local=7.10.2
+ament_lint_auto                           : latest=0.20.6, local=0.20.6
+image_transport_py                        : latest=6.4.10, local=6.4.10
+rqt_shell                                 : latest=1.4.2, local=1.4.2
+examples_rclcpp_minimal_action_client     : latest=0.21.5, local=0.21.5
+demo_nodes_py                             : latest=0.37.9, local=0.37.9
+action_tutorials_cpp                      : latest=0.37.9, local=0.37.9
+rosbag2_examples_cpp                      : latest=0.33.3, local=0.33.3
+ament_cmake_vendor_package                : latest=2.8.8, local=2.8.8
+rosidl_typesupport_c                      : latest=3.4.2, local=3.4.2
+rmw_fastrtps_cpp                          : latest=9.4.9, local=9.4.9
+dummy_sensors                             : latest=0.37.9, local=0.37.9
+zenoh_security_tools                      : latest=0.10.5, local=0.10.5
+rosbag2_storage                           : latest=0.33.3, local=0.33.3
+shape_msgs                                : latest=5.9.3, local=5.9.3
+eigen3_cmake_module                       : latest=0.5.1, local=0.5.1
+example_interfaces                        : latest=0.14.1, local=0.14.1
+rosbag2_compression_zstd                  : latest=0.33.3, local=0.33.3
+rmw_test_fixture_implementation           : latest=0.15.8, local=0.15.8
+rqt_msg                                   : latest=1.7.4, local=1.7.4
+std_srvs                                  : latest=5.9.3, local=5.9.3
+ament_cmake_uncrustify                    : latest=0.20.6, local=0.20.6
+ros2launch                                : latest=0.29.9, local=0.29.9
+rosidl_parser                             : latest=5.2.1, local=5.2.1
+resource_retriever_service_plugin         : latest=0.0.3, local=0.0.3
+demo_nodes_cpp                            : latest=0.37.9, local=0.37.9
+ros2bag                                   : latest=0.33.3, local=0.33.3
+ament_cmake_ros_core                      : latest=0.15.8, local=0.15.8
+rviz_default_plugins                      : latest=15.2.6, local=15.2.6
+ament_clang_tidy                          : latest=0.20.6, local=0.20.6
+rmw_dds_common                            : latest=6.0.0, local=6.0.0
+rcl_yaml_param_parser                     : latest=10.4.5, local=10.4.5
+rcutils                                   : latest=7.1.3, local=7.1.3
+tf2_ros                                   : latest=0.45.9, local=0.45.9
+rqt_py_common                             : latest=1.10.6, local=1.10.6
+ros2run                                   : latest=0.40.9, local=0.40.9
+image_common                              : latest=6.4.10, local=6.4.10
+rqt_py_console                            : latest=1.5.3, local=1.5.3
+ament_cmake_clang_tidy                    : latest=0.20.6, local=0.20.6
+rosidl_typesupport_cpp                    : latest=3.4.2, local=3.4.2
+launch_ros                                : latest=0.29.9, local=0.29.9
+rosbag2_storage_sqlite3                   : latest=0.33.3, local=0.33.3
+ros2cli                                   : latest=0.40.9, local=0.40.9
+ament_cmake_auto                          : latest=2.8.8, local=2.8.8
+ament_cmake_pep257                        : latest=0.20.6, local=0.20.6
+turtlesim_msgs                            : latest=1.10.9, local=1.10.9
+libstatistics_collector                   : latest=2.1.2, local=2.1.2
+tf2_eigen                                 : latest=0.45.9, local=0.45.9
+ament_cmake_pyflakes                      : latest=0.20.6, local=0.20.6
+qt_dotgraph                               : latest=2.11.1, local=2.11.1
+rosidl_cmake                              : latest=5.2.1, local=5.2.1
+sros2_cmake                               : latest=0.16.6, local=0.16.6
+ament_cmake_export_dependencies           : latest=2.8.8, local=2.8.8
+ament_cmake_flake8                        : latest=0.20.6, local=0.20.6
+demo_nodes_cpp_native                     : latest=0.37.9, local=0.37.9
+topic_monitor                             : latest=0.37.9, local=0.37.9
+launch_testing_ament_cmake                : latest=3.9.8, local=3.9.8
+ament_clang_format                        : latest=0.20.6, local=0.20.6
+rosbag2_cpp                               : latest=0.33.3, local=0.33.3
+test_cli_remapping                        : latest=N/A, local=0.25.3
+tf2_eigen_kdl                             : latest=0.45.9, local=0.45.9
+rosidl_typesupport_introspection_cpp      : latest=5.2.1, local=5.2.1
+rosidl_pycommon                           : latest=5.2.1, local=5.2.1
+examples_rclcpp_minimal_timer             : latest=0.21.5, local=0.21.5
+tracetools                                : latest=8.10.2, local=8.10.2
+ament_pyflakes                            : latest=0.20.6, local=0.20.6
+rqt_publisher                             : latest=1.10.4, local=1.10.4
+tracetools_launch                         : latest=8.10.2, local=8.10.2
+ros_environment                           : latest=4.5.1, local=4.5.1
+camera_info_manager_py                    : latest=6.4.10, local=6.4.10
+rcl_logging_spdlog                        : latest=3.4.1, local=3.4.1
+ament_cmake_python                        : latest=2.8.8, local=2.8.8
+rosidl_generator_tests                    : latest=N/A, local=5.2.1
+topic_statistics_demo                     : latest=0.37.9, local=0.37.9
+test_ros2trace                            : latest=N/A, local=8.10.2
+rqt_action                                : latest=2.5.0, local=2.5.0
+ament_cmake_target_dependencies           : latest=2.8.8, local=2.8.8
+gz_utils_vendor                           : latest=0.4.1, local=0.4.1
+ros2param                                 : latest=0.40.9, local=0.40.9
+class_loader                              : latest=2.9.4, local=2.9.4
+tlsf                                      : latest=0.11.1, local=0.11.1
+rviz_common                               : latest=15.2.6, local=15.2.6
+tf2_sensor_msgs                           : latest=0.45.9, local=0.45.9
+tlsf_cpp                                  : latest=0.20.1, local=0.20.1
+ament_cmake_core                          : latest=2.8.8, local=2.8.8
+ament_mypy                                : latest=0.20.6, local=0.20.6
+examples_rclpy_minimal_client             : latest=0.21.5, local=0.21.5
+rclcpp_components                         : latest=32.0.3, local=32.0.3
+ament_cmake_copyright                     : latest=0.20.6, local=0.20.6
+rosidl_dynamic_typesupport                : latest=0.4.1, local=0.4.1
+tracetools_trace                          : latest=8.10.2, local=8.10.2
+ament_index_python                        : latest=1.13.3, local=1.13.3
+rmw_fastrtps_shared_cpp                   : latest=9.4.9, local=9.4.9
+rosidl_generator_c                        : latest=5.2.1, local=5.2.1
+examples_rclcpp_cbg_executor              : latest=0.21.5, local=0.21.5
+ament_cmake_mypy                          : latest=0.20.6, local=0.20.6
+ros2topic                                 : latest=0.40.9, local=0.40.9
+test_rmw_implementation                   : latest=N/A, local=3.1.6
+lz4_cmake_module                          : latest=0.33.3, local=0.33.3
+ros2component                             : latest=0.40.9, local=0.40.9
+test_msgs                                 : latest=2.4.5, local=2.4.5
+examples_rclpy_pointcloud_publisher       : latest=0.21.5, local=0.21.5
+rqt_graph                                 : latest=1.8.5, local=1.8.5
+ros2lifecycle_test_fixtures               : latest=0.40.9, local=0.40.9
+rqt_service_caller                        : latest=1.5.4, local=1.5.4
+rosidl_generator_dds_idl                  : latest=0.13.0, local=0.13.0
+ros2action                                : latest=0.40.9, local=0.40.9
+console_bridge_vendor                     : latest=1.9.1, local=1.9.1
+visualization_msgs                        : latest=5.9.3, local=5.9.3
+sensor_msgs_py                            : latest=5.9.3, local=5.9.3
+rosbag2                                   : latest=0.33.3, local=0.33.3
+gz_math_vendor                            : latest=0.4.5, local=0.4.5
+performance_test_fixture                  : latest=0.4.1, local=0.4.1
+
+   PLATFORM INFORMATION
+system           : Linux
+platform info    : Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41
+release          : 6.12.107+deb13-amd64
+processor        : 
+
+   QOS COMPATIBILITY LIST
+compatibility status    : No publisher/subscriber pairs found
+
+   RMW MIDDLEWARE
+middleware name    : rmw_fastrtps_cpp
+
+   ROS 2 INFORMATION
+distribution name      : lyrical
+distribution type      : ros2
+distribution status    : active
+release platforms      : {'debian': ['trixie'], 'fedora': ['43'], 'rhel': ['10'], 'ubuntu': ['resolute']}
+
+   SERVICE LIST
+service          : none
+service count    : 0
+client count     : 0
+
+   TOPIC LIST
+topic               : none
+publisher count     : 0
+subscriber count    : 0
+
+================================================================================
+                                !!! WARNING !!!                                 
+================================================================================
+The report includes all ROS 2 endpoint information and system platform information.
+Please review the report before sharing, as it may contain sensitive or private data.
+================================================================================
+

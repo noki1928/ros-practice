@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "practice_id": "PR01",
+  "commit": "7bd4a71771be6c2ab81e7fde3e7083f7adfea033",
+  "course_kit": {
+    "version": "v1-w01",
+    "archive_sha256": "57866a9c98fa3abdec27b35a180697ee680bfb0f05cc015970ce306d6d849fea"
+  },
+  "commands": [
+    "source ~/ros_gz_ws/activate.zsh",
+    "export ROS_DOMAIN_ID=24",
+    "ros2 run turtlesim turtlesim_node",
+    "ros2 run turtlesim turtle_teleop_key",
+    "ros2 node list --no-daemon --spin-time 2",
+    "ros2 topic list -t",
+    "ros2 node info /turtlesim",
+    "ros2 topic type /turtle1/pose",
+    "ros2 topic echo /turtle1/pose --once",
+    "ros2 topic hz /turtle1/pose",
+    "export ROS_DOMAIN_ID=25",
+    "timeout 5s ros2 topic echo /turtle1/pose turtlesim_msgs/msg/Pose --once",
+    "export ROS_DOMAIN_ID=24"
+  ],
+  "tests": [
+    {
+      "name": "Исправный граф turtlesim и teleop в ROS_DOMAIN_ID=24",
+      "status": "passed"
+    },
+    {
+      "name": "Тип и частота /turtle1/pose: turtlesim_msgs/msg/Pose, 62.500 Hz",
+      "status": "passed"
+    },
+    {
+      "name": "Разрыв связи в ROS_DOMAIN_ID=25: timeout /turtle1/pose, exit=124",
+      "status": "passed"
+    },
+    {
+      "name": "Восстановление связи в ROS_DOMAIN_ID=24: поза получена, exit=0",
+      "status": "passed"
+    }
+  ],
+  "defect": {
+    "reproducer": "Симулятор работал в ROS_DOMAIN_ID=24. После перезапуска turtle_teleop_key в ROS_DOMAIN_ID=25 наблюдатель в домене 25 видел только /teleop_turtle, а timeout 5s ros2 topic echo /turtle1/pose turtlesim_msgs/msg/Pose --once завершался с exit=124.",
+    "root_cause": "DDS discovery ограничен значением ROS_DOMAIN_ID. Изменение переменной окружения действует только на вновь запускаемый процесс и не меняет домен уже работающей ноды.",
+    "proof_after": "После перезапуска turtle_teleop_key и наблюдателя в ROS_DOMAIN_ID=24 команда ros2 node list показала /teleop_turtle и /turtlesim, а получение /turtle1/pose завершилось с exit=0."
+  },
+  "claims": {
+    "public_tests_passed": true,
+    "defect_reproduced": true,
+    "defect_fixed": true
+  },
+  "time": {
+    "contact_academic_hours": 2,
+    "self_study_hours": 2
+  },
+  "ai_used": true
+}
