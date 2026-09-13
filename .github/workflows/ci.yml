@@ -1,0 +1,24 @@
+name: Validate PR01 Evidence
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate evidence JSON when present
+        run: |
+          if [ ! -f evidence/pr01/environment.json ] || [ ! -f evidence/pr01/report.json ]; then
+            exit 0
+          fi
+          python3 -m json.tool evidence/pr01/environment.json > /dev/null
+          python3 -m json.tool evidence/pr01/report.json > /dev/null
