@@ -6,6 +6,7 @@ permissions:
   contents: read
 
 env:
+  COURSE_KIT_ARCHIVE: robotics-course-kit-v1-w01-57866a9c98fa.tar.gz
   COURSE_KIT_URL: https://ros.lms.ci.nsu.ru/downloads/robotics-course-kit-v1-w01-57866a9c98fa.tar.gz
   COURSE_KIT_SHA256: 57866a9c98fa3abdec27b35a180697ee680bfb0f05cc015970ce306d6d849fea
 
@@ -22,10 +23,10 @@ jobs:
       - name: Download course kit
         shell: bash
         run: |
-          curl -fsSLo course-kit.tar.gz "$COURSE_KIT_URL"
-          printf '%s  %s\n' "$COURSE_KIT_SHA256" course-kit.tar.gz | sha256sum -c -
+          curl -fsSLo "$COURSE_KIT_ARCHIVE" "$COURSE_KIT_URL"
+          printf '%s  %s\n' "$COURSE_KIT_SHA256" "$COURSE_KIT_ARCHIVE" | sha256sum -c -
           mkdir -p .course-kit
-          tar -xzf course-kit.tar.gz -C .course-kit
+          tar -xzf "$COURSE_KIT_ARCHIVE" -C .course-kit
       - name: Validate environment JSON
         shell: bash
         run: python3 -m json.tool evidence/pr01/environment.json > /dev/null
