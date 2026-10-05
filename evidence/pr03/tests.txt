@@ -1,0 +1,36 @@
+# PR03 — результаты проверок
+
+Среда локального прогона: ROS 2 Lyrical, Python 3.12.3.
+
+```text
+$ colcon build --symlink-install
+Starting >>> patrol
+Starting >>> turtle_bringup
+Finished <<< patrol
+Finished <<< turtle_bringup
+Summary: 2 packages finished
+
+$ python3 -m py_compile src/patrol/patrol/patrol.py
+успешно, ошибок синтаксиса нет
+
+$ colcon test --packages-select patrol --event-handlers console_direct+
+test/test_command.py ..
+test/test_copyright.py s
+test/test_flake8.py .
+test/test_mypy.py .
+test/test_pep257.py .
+test/test_xmllint.py .
+6 passed, 1 skipped
+
+$ colcon test-result --verbose
+Summary: 7 tests, 0 errors, 0 failures, 1 skipped
+```
+
+Unit-тесты проверяют нулевой Twist при отсутствии Pose и значения
+`linear.x=0.5`, `angular.z=0.3` при наличии Pose. Skip относится к
+сгенерированной проверке copyright. В CI тестируется пакет `patrol`;
+`turtle_bringup` собирается, но у него нет тестов, поэтому его не включают в
+`colcon test`.
+
+ROS-граф, endpoints и частота описаны по выводам терминала студента в
+`demo.md`. Облачный CI не объявляется пройденным до запуска workflow на GitHub.

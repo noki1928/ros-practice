@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "practice_id": "PR03",
+  "commit": "fb16f8000ae47cc9014371c0ec97ed3a5456f539",
+  "course_kit": {
+    "version": "v1-w05",
+    "archive_sha256": "bca214e3de6f90f9513049dfa0f36fee65ad834da502dc3f3f8fb443517b5197"
+  },
+  "commands": [
+    "colcon build --symlink-install",
+    "python3 -m py_compile src/patrol/patrol/patrol.py",
+    "colcon test --packages-select patrol --event-handlers console_direct+",
+    "colcon test-result --verbose",
+    "ros2 run patrol patrol --ros-args -r cmd_vel:=/turtle1/cmd_vel",
+    "ros2 node list --no-daemon --spin-time 2",
+    "ros2 topic info /turtle1/pose --verbose",
+    "ros2 topic info /turtle1/cmd_vel --verbose",
+    "ros2 topic hz /turtle1/cmd_vel",
+    "ros2 run patrol patrol",
+    "ros2 topic info /cmd_vel --verbose",
+    "ros2 topic info /turtle1/cmd_vel --verbose",
+    "ros2 topic hz /cmd_vel",
+    "ros2 run patrol patrol --ros-args -r cmd_vel:=/turtle1/cmd_vel",
+    "python3 .course-kit/v1/tools/check_practice.py PR03 --submission ."
+  ],
+  "tests": [
+    {"name": "Полная сборка turtle_bringup и patrol", "status": "passed"},
+    {"name": "py_compile patrol.py", "status": "passed"},
+    {"name": "Два unit-теста выбора Twist", "status": "passed"},
+    {"name": "ament flake8, mypy, pep257 и xmllint для patrol", "status": "passed"},
+    {"name": "ament copyright", "status": "skipped"},
+    {"name": "Pose endpoint совпадает: turtlesim_msgs/msg/Pose", "status": "passed"},
+    {"name": "Дефект /cmd_vel: patrol publisher, 0 subscriptions", "status": "passed"},
+    {"name": "Исправление remap: patrol publisher и turtlesim subscription", "status": "passed"},
+    {"name": "Частота команды более 10 секунд: около 10 Hz", "status": "passed"},
+    {"name": "GitHub Actions", "status": "skipped"}
+  ],
+  "defect": {
+    "reproducer": "Запустить ros2 run patrol patrol без remap. CLI показал издателя patrol и 0 подписчиков на /cmd_vel; /turtle1/cmd_vel имел 0 издателей и подписчика turtlesim. Частота /cmd_vel была около 10 Hz.",
+    "root_cause": "Издатель использует относительное имя cmd_vel. В корневом namespace оно разрешается в /cmd_vel, тогда как turtlesim подписан на /turtle1/cmd_vel. Тип Twist совпадает, полные имена — нет.",
+    "proof_after": "Перезапуск с --ros-args -r cmd_vel:=/turtle1/cmd_vel дал на /turtle1/cmd_vel один publisher patrol и одну subscription turtlesim; ros2 topic hz показал около 10 Hz. Выводы endpoints и частоты задокументированы в demo.md по результатам терминала студента."
+  },
+  "claims": {
+    "public_tests_passed": true,
+    "defect_reproduced": true,
+    "defect_fixed": true
+  },
+  "time": {
+    "contact_academic_hours": 0,
+    "self_study_hours": 0.75
+  },
+  "ai_used": true
+}
