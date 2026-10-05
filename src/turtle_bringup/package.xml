@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>turtle_bringup</name>
+  <version>0.0.1</version>
+  <description>Launch the turtlesim simulator for ROS 2 practice PR02.</description>
+  <maintainer email="astvacp@gmail.com">Pavel Tsaturov</maintainer>
+  <license>Apache-2.0</license>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>turtlesim</exec_depend>
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

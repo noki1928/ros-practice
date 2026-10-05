@@ -1,4 +1,4 @@
-name: PR01 Checks
+name: PR02 Checks
 
 on: [push, pull_request]
 
@@ -6,20 +6,27 @@ permissions:
   contents: read
 
 env:
-  COURSE_KIT_ARCHIVE: robotics-course-kit-v1-w01-57866a9c98fa.tar.gz
-  COURSE_KIT_URL: https://ros.lms.ci.nsu.ru/downloads/robotics-course-kit-v1-w01-57866a9c98fa.tar.gz
-  COURSE_KIT_SHA256: 57866a9c98fa3abdec27b35a180697ee680bfb0f05cc015970ce306d6d849fea
+  COURSE_KIT_ARCHIVE: robotics-course-kit-v1-w05-bca214e3de6f.tar.gz
+  COURSE_KIT_URL: https://ros.lms.ci.nsu.ru/downloads/robotics-course-kit-v1-w05-bca214e3de6f.tar.gz
+  COURSE_KIT_SHA256: bca214e3de6f90f9513049dfa0f36fee65ad834da502dc3f3f8fb443517b5197
 
 jobs:
   validate:
     runs-on: ubuntu-latest
+    container:
+      image: osrf/ros:jazzy-desktop-full@sha256:d16957210572c5f919f3f9bd2fb0cc24a82542647489d8b8eda7c3beda31305f
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+      - name: Build PR02 launch package
+        shell: bash
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          colcon build --symlink-install --packages-select turtle_bringup
+          source install/setup.bash
+          test -f "$(ros2 pkg prefix turtle_bringup)/share/turtle_bringup/launch/sim.launch.py"
+          python3 -m py_compile src/turtle_bringup/launch/sim.launch.py
       - name: Download course kit
         shell: bash
         run: |
@@ -33,4 +40,4 @@ jobs:
       - name: Check PR evidence
         shell: bash
         run: |
-          python3 .course-kit/v1/tools/check_practice.py PR01 --submission .
+          python3 .course-kit/v1/tools/check_practice.py PR02 --submission .

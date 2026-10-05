@@ -2,3 +2,8 @@
 robotics-course-kit-*.tar.gz
 robotics-course-kit-*.sha256.txt
 evidence/prNN/
+build/
+install/
+log/
+__pycache__/
+*.egg-info/
