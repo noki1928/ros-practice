@@ -46,8 +46,8 @@
     "defect_fixed": true
   },
   "time": {
-    "contact_academic_hours": 0,
-    "self_study_hours": 0.75
+    "contact_academic_hours": 2,
+    "self_study_hours": 1
   },
   "ai_used": true
 }
