@@ -1,0 +1,61 @@
+PR04 — локальные проверки
+
+Среда: локальная ROS 2 Lyrical, Python 3.12. Источники берутся из src/patrol,
+а не из старой копии в build/. Сначала активирована базовая ROS:
+
+export PATH="$HOME/ros2_lyrical/.pixi/envs/default/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/ros2_lyrical/.pixi/envs/default/lib:${LD_LIBRARY_PATH:-}"
+source ~/ros2_lyrical/install/setup.zsh
+
+Из корня репозитория:
+$ PYTHONPYCACHEPREFIX=/tmp/opencode/ros-practice-pycache python3 -m py_compile src/patrol/patrol/patrol.py src/patrol/test/test_parameters.py src/patrol/test/test_command.py
+Код завершения: 0, вывода нет.
+
+Из src/patrol:
+$ PYTHONPATH="$PWD:${PYTHONPATH:-}" PYTHONPYCACHEPREFIX=/tmp/opencode/ros-practice-pycache python3 -m pytest test -q
+...s..........................                                           [100%]
+29 passed, 1 skipped, 17 warnings in 16.42s
+Код завершения: 0.
+
+Проверки:
+- Нулевая команда без Pose; стандартные и настроенные скорости при Pose.
+- Конечные значения и границы диапазонов всех трёх параметров.
+- Отклонение нуля, отрицательной и чрезмерной частоты, NaN и infinity.
+- Callback: 10→5 Гц, отмена/удаление прежнего таймера, один новый с периодом 0.2.
+- При отказе сохранены таймер и активные параметры; bool и строка отклоняются.
+- ament flake8, mypy, pep257, xmllint.
+- Copyright пропущен штатным тестом пакета.
+
+Предупреждения относятся к pkg_resources и fork в многопоточном процессе.
+Тесты callback используют mock-таймер: они не измеряют DDS-поток и не проверяют
+всю транзакцию rclpy. Частота реальной ноды описана в parameters.md.
+
+CI настроен, но результат GitHub Actions ещё не получен.
+
+Из корня репозитория:
+$ python3 .course-kit/v1/tools/check_practice.py PR04 --submission . --json
+status: failed
+Единственная ошибка: после report.commit незакоммиченными могут быть только
+evidence текущей ПР и AI_USAGE.md; неожиданные пути: .github/workflows/ci.yml,
+README.md, src/patrol/package.xml, src/patrol/test/test_command.py,
+src/patrol/test/test_parameters.py.
+Код завершения: 1.
+
+Это промежуточный результат до фиксации технических изменений.
+
+Финальная сборка и тесты (ROS 2 Lyrical, Python 3.12.3):
+$ colcon build --symlink-install
+Summary: 2 packages finished [4.93s]
+$ python3 -m py_compile src/patrol/patrol/patrol.py src/turtle_bringup/launch/sim.launch.py
+Код завершения: 0.
+$ colcon test --packages-select patrol --event-handlers console_direct+
+29 passed, 1 skipped, 17 warnings in 16.85s
+$ colcon test-result --verbose
+Summary: 30 tests, 0 errors, 0 failures, 1 skipped
+
+Технические изменения зафиксированы в dc01914586e9486418de37c75d9bae820344292a.
+JSON корректен; git diff --check завершился с кодом 0.
+
+$ python3 .course-kit/v1/tools/check_practice.py PR04 --submission . --json
+{"errors": [], "practice_id": "PR04", "status": "passed"}
+Код завершения: 0.

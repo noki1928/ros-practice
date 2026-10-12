@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "practice_id": "PR04",
+  "commit": "dc01914586e9486418de37c75d9bae820344292a",
+  "course_kit": {
+    "version": "v1-w05",
+    "archive_sha256": "bca214e3de6f90f9513049dfa0f36fee65ad834da502dc3f3f8fb443517b5197"
+  },
+  "commands": [
+    "python3 -m py_compile src/patrol/patrol/patrol.py src/patrol/test/test_parameters.py src/patrol/test/test_command.py",
+    "cd src/patrol && PYTHONPATH=\"$PWD:${PYTHONPATH:-}\" python3 -m pytest test -q",
+    "export ROS_DOMAIN_ID=24",
+    "ros2 param get /patrol publish_hz",
+    "ros2 param set /patrol linear_speed 0.8",
+    "ros2 param set /patrol turn_rate 0.6",
+    "ros2 param set /patrol publish_hz 5.0",
+    "ros2 param set /patrol linear_speed 1.0",
+    "ros2 param set /patrol publish_hz 0.0",
+    "ros2 param get /patrol publish_hz",
+    "ros2 topic hz /turtle1/cmd_vel",
+    "ros2 service call /clear std_srvs/srv/Empty '{}'",
+    "ros2 action list -t"
+  ],
+  "tests": [
+    {"name": "colcon build: patrol и turtle_bringup", "status": "passed"},
+    {"name": "py_compile", "status": "passed"},
+    {"name": "Открытые тесты параметров, callback и команд; линтеры — 29 passed", "status": "passed"},
+    {"name": "ament copyright", "status": "skipped"},
+    {"name": "Изменение параметров и измерение потока 5 Гц студентом", "status": "passed"},
+    {"name": "Дефектная версия: деление на ноль, процесс завершился с кодом 1", "status": "passed"},
+    {"name": "После исправления: ноль отклонён, параметр остался 10.0", "status": "passed"},
+    {"name": "После отказа нулевой частоты поток сохраняется около 10 Гц", "status": "passed"},
+    {"name": "Вызов /clear: Empty_Response, рисунок очистился; найден RotateAbsolute", "status": "passed"},
+    {"name": "GitHub Actions", "status": "skipped"}
+  ],
+  "defect": {
+    "reproducer": "В коммите cccd7bd3cd13f92620a9a04a7a72f5e00aa1f700 отключена проверка диапазона publish_hz. Студент передал нулевую частоту и получил ZeroDivisionError: float division by zero в on_parameters; процесс завершился с кодом 1, черепаха остановилась.",
+    "root_cause": "Ноль без проверки диапазона проходит к вычислению периода 1.0 / publish_hz. Необработанное исключение завершает ноду.",
+    "proof_after": "В коммите 403dce0d2e1b584489c83dc04a4de80d67242429 проверка восстановлена. Повторный запрос 0.0 отклонён с reason publish_hz must be between 1 and 30, get вернул прежние 10.0, поток после отказа сохраняется около 10 Гц (окно 119 сообщений). Ранее на исправной версии после отказа подтверждены сохранение 5.0 и поток около 5 Гц. Открытые тесты подтверждают отсутствие изменений таймера и активных параметров при отказе."
+  },
+  "claims": {
+    "public_tests_passed": true,
+    "defect_reproduced": true,
+    "defect_fixed": true
+  },
+  "time": {
+    "contact_academic_hours": 1,
+    "self_study_hours": 1
+  },
+  "notes": [
+    "Время работы сообщено студентом: 1 академический час на занятии и 1 час самостоятельной работы.",
+    "Отчёт фиксируется отдельным коммитом после коммита технических изменений.",
+    "ROS-выводы предоставлены студентом; локальные unit-тесты запущены агентом. Непроведённые проверки не объявляются пройденными."
+  ],
+  "ai_used": true
+}
