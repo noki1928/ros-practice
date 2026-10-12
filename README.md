@@ -140,3 +140,42 @@ python3 .course-kit/v1/tools/check_practice.py PR03 --submission .
 собирает оба ROS-пакета и запускает проверки patrol в закреплённом образе
 ROS 2 Lyrical. Демонстрация CLI и измерения записаны в `evidence/pr03/demo.md`;
 локальные результаты тестов — в `evidence/pr03/tests.txt`.
+
+## PR04: Параметризуем движение
+
+Параметры `patrol`: `linear_speed=0.5` (0–1 м/с), `turn_rate=0.3`
+(−1–1 рад/с), `publish_hz=10.0` (1–30 Гц). Все значения должны быть конечными.
+Нода публикует непосредственно в `/turtle1/cmd_vel`; remap из ПР03 не нужен.
+При допустимой смене частоты старый таймер останавливается и уничтожается,
+а новый получает период `1/publish_hz`. Недопустимый ввод не меняет состояние.
+
+После активации ROS и сборки запустите turtlesim и `ros2 run patrol patrol`
+в отдельных терминалах с одинаковым `ROS_DOMAIN_ID=24`. Проверки:
+
+```bash
+ros2 param get /patrol publish_hz
+ros2 param set /patrol linear_speed 0.8
+ros2 param set /patrol turn_rate 0.6
+ros2 param set /patrol publish_hz 5.0
+ros2 topic hz /turtle1/cmd_vel
+ros2 param set /patrol publish_hz 0.0
+ros2 param get /patrol publish_hz
+ros2 topic hz /turtle1/cmd_vel
+```
+
+Локальные тесты запускайте из каталога пакета, чтобы линтер не проверял
+старые копии исходников в `build/` (ROS должна быть активирована):
+
+```bash
+cd src/patrol
+PYTHONPATH="$PWD:${PYTHONPATH:-}" python3 -m pytest test -q
+```
+
+CI собирает оба пакета в закреплённой ROS 2 Lyrical, проверяет синтаксис,
+запускает тесты `patrol`, сохраняет XML-результаты и проверяет evidence PR04.
+Команды и наблюдения: `evidence/pr04/parameters.md`; результаты тестов:
+`evidence/pr04/tests.txt`; оставшиеся пункты: `evidence/pr04/checklist.md`.
+
+Course checker требует сначала коммит реализации (включая тесты, CI,
+`package.xml` и README), затем отдельный коммит только `evidence/pr04/`
+и `AI_USAGE.md`. В `report.json` укажите полный SHA первого коммита.

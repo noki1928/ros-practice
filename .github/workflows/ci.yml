@@ -1,4 +1,4 @@
-name: PR03 Checks
+name: PR04 Checks
 
 on: [push, pull_request]
 
@@ -29,6 +29,12 @@ jobs:
           python3 -m py_compile src/turtle_bringup/launch/sim.launch.py src/patrol/patrol/patrol.py
           colcon test --packages-select patrol --event-handlers console_direct+
           colcon test-result --verbose
+      - name: Save test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: patrol-test-results
+          path: build/patrol/pytest.xml
       - name: Download course kit
         shell: bash
         run: |
@@ -39,4 +45,4 @@ jobs:
       - name: Check PR evidence
         shell: bash
         run: |
-          python3 .course-kit/v1/tools/check_practice.py PR03 --submission .
+          python3 .course-kit/v1/tools/check_practice.py PR04 --submission .

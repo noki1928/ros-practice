@@ -26,3 +26,10 @@ def test_command_with_pose_has_expected_velocity():
     assert command.angular.x == 0.0
     assert command.angular.y == 0.0
     assert command.angular.z == 0.3
+
+
+def test_command_uses_configured_velocities():
+    command = command_for_pose(Pose(), 0.8, 0.6)
+
+    assert command.linear.x == 0.8
+    assert command.angular.z == 0.6
