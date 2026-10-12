@@ -23,8 +23,8 @@ def validate_parameters(
     if not -1.0 <= turn_rate <= 1.0:
         return 'turn_rate must be between -1 and 1'
 
-    # if not 1.0 <= publish_hz <= 30.0:
-        # return 'publish_hz must be between 1 and 30'
+    if not 1.0 <= publish_hz <= 30.0:
+        return 'publish_hz must be between 1 and 30'
 
     return ''
 
