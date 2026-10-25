@@ -1,8 +1,10 @@
 import math
+import signal
 
 from geometry_msgs.msg import Twist
 from rcl_interfaces.msg import SetParametersResult
 import rclpy
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from turtlesim_msgs.msg import Pose
 
@@ -69,14 +71,14 @@ class Patrol(Node):
 
         self.pose_sub = self.create_subscription(
             Pose,
-            '/turtle1/pose',
+            'turtle1/pose',
             self.on_pose,
             10,
         )
 
         self.publisher = self.create_publisher(
             Twist,
-            '/turtle1/cmd_vel',
+            'turtle1/cmd_vel',
             10,
         )
 
@@ -153,8 +155,10 @@ def main(args=None) -> None:
 
     try:
         rclpy.spin(node)
-    except KeyboardInterrupt:
-        pass
+    except (KeyboardInterrupt, ExternalShutdownException):
+        # Ctrl+C reaches the node twice (terminal and launch); ignore the
+        # second SIGINT so it does not interrupt cleanup.
+        signal.signal(signal.SIGINT, signal.SIG_IGN)
     finally:
         node.destroy_node()
         rclpy.try_shutdown()

@@ -1,4 +1,4 @@
-name: PR04 Checks
+name: PR05 Checks
 
 on: [push, pull_request]
 
@@ -26,15 +26,20 @@ jobs:
           colcon build --symlink-install
           source install/setup.bash
           test -f "$(ros2 pkg prefix turtle_bringup)/share/turtle_bringup/launch/sim.launch.py"
-          python3 -m py_compile src/turtle_bringup/launch/sim.launch.py src/patrol/patrol/patrol.py
-          colcon test --packages-select patrol --event-handlers console_direct+
+          test -f "$(ros2 pkg prefix course_bringup)/share/course_bringup/launch/bringup.launch.py"
+          test -f "$(ros2 pkg prefix course_bringup)/share/course_bringup/config/qos-overrides.yaml"
+          python3 -m py_compile src/turtle_bringup/launch/sim.launch.py src/patrol/patrol/patrol.py \
+            src/course_bringup/launch/bringup.launch.py src/course_bringup/course_bringup/*.py
+          colcon test --packages-select patrol course_bringup --event-handlers console_direct+
           colcon test-result --verbose
       - name: Save test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: patrol-test-results
-          path: build/patrol/pytest.xml
+          name: test-results
+          path: |
+            build/patrol/pytest.xml
+            build/course_bringup/pytest.xml
       - name: Download course kit
         shell: bash
         run: |
@@ -45,4 +50,4 @@ jobs:
       - name: Check PR evidence
         shell: bash
         run: |
-          python3 .course-kit/v1/tools/check_practice.py PR04 --submission .
+          python3 .course-kit/v1/tools/check_practice.py PR05 --submission .

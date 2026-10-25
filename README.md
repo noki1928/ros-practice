@@ -179,3 +179,41 @@ CI собирает оба пакета в закреплённой ROS 2 Lyrica
 Course checker требует сначала коммит реализации (включая тесты, CI,
 `package.xml` и README), затем отдельный коммит только `evidence/pr04/`
 и `AI_USAGE.md`. В `report.json` укажите полный SHA первого коммита.
+
+## PR05: Launch, QoS и повтор записи
+
+Пакет `src/course_bringup` поднимает систему одной командой:
+`turtlesim` в корневом пространстве имён, а `patrol`, `pose_relay` и
+`sensor_listener` — в `/<namespace>` (по умолчанию `/robot_a`).
+
+- `patrol` теперь использует относительные имена `turtle1/pose` и
+  `turtle1/cmd_vel`; без namespace (`ros2 run patrol patrol`) они совпадают с
+  прежними абсолютными. В launch они переназначены на `/turtle1/pose` и
+  `/turtle1/cmd_vel`.
+- `pose_relay` читает `/turtle1/pose` и публикует `sensor_pose`
+  (`/robot_a/sensor_pose`) с `best_effort`.
+- `sensor_listener` подписан на `sensor_pose` с reliability из аргумента
+  `subscriber_reliability`, раз в 2 с печатает число полученных сообщений и
+  предупреждает о несовместимом QoS.
+- Аргументы launch: `namespace`, `record` (`true` запускает
+  `ros2 bag record` в MCAP через `IfCondition`), `bag_dir` (каталог не должен
+  существовать), `subscriber_reliability` (`reliable` | `best_effort`).
+
+```bash
+ros2 launch course_bringup bringup.launch.py subscriber_reliability:=reliable
+ros2 topic info -v /robot_a/sensor_pose
+ros2 launch course_bringup bringup.launch.py record:=true bag_dir:=bags/pr05-after
+ros2 bag info bags/pr05-after
+ros2 run course_bringup sensor_listener --ros-args -r __ns:=/robot_a -p reliability:=reliable
+ros2 bag play bags/pr05-after \
+  --qos-profile-overrides-path src/course_bringup/config/qos-overrides.yaml
+```
+
+Без overrides `ros2 bag play` повторяет записанный `best_effort`, и
+`reliable`-подписчик ничего не получает; `config/qos-overrides.yaml`
+переводит повтор `/robot_a/sensor_pose` в `reliable`.
+
+Ноды игнорируют повторный SIGINT во время очистки: при Ctrl+C сигнал приходит
+и от терминала, и от `ros2 launch`. Launch-тест `test_bringup_launch.py`
+поднимает систему без GUI (`QT_QPA_PLATFORM=offscreen`), ждёт доставки
+`best_effort` и проверяет коды завершения процессов.

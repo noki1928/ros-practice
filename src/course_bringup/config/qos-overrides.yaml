@@ -1,0 +1,8 @@
+# QoS profile overrides for `ros2 bag play --qos-profile-overrides-path`.
+# The bag stores the offered best_effort profile of /robot_a/sensor_pose;
+# replaying it as reliable lets a reliable subscriber receive the messages.
+/robot_a/sensor_pose:
+  history: keep_last
+  depth: 10
+  reliability: reliable
+  durability: volatile
