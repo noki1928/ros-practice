@@ -34,7 +34,7 @@
     {"name": "Повтор без overrides: reliable-подписчик получил 0 сообщений", "status": "passed"},
     {"name": "Повтор с qos-overrides.yaml: reliable-подписчик получил 5915 из 5915", "status": "passed"},
     {"name": "Ноды завершаются с кодом 0 при Ctrl+C (process has finished cleanly)", "status": "passed"},
-    {"name": "GitHub Actions", "status": "skipped"}
+    {"name": "GitHub Actions: workflow validate, run 40215658561 на коммите 95560c9", "status": "passed"}
   ],
   "defect": {
     "reproducer": "ros2 launch course_bringup bringup.launch.py subscriber_reliability:=reliable: топик /robot_a/sensor_pose виден, ros2 topic info -v показывает издателя pose_relay с BEST_EFFORT и подписчика sensor_listener с RELIABLE; sensor_listener пишет Incompatible QoS ... policy RELIABILITY и received 0 messages на протяжении всего запуска; ros2 topic echo --qos-reliability reliable за 5 с не получил ни одного сообщения. При повторе записи bags/pr05-after без overrides reliable-подписчик также получил 0 сообщений.",
