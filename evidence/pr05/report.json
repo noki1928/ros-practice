@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "practice_id": "PR05",
+  "commit": "6035480ef3dea476c4cdf18490fd610715139ffc",
+  "course_kit": {
+    "version": "v1-w05",
+    "archive_sha256": "bca214e3de6f90f9513049dfa0f36fee65ad834da502dc3f3f8fb443517b5197"
+  },
+  "commands": [
+    "colcon build --symlink-install",
+    "colcon test --packages-select patrol course_bringup",
+    "export ROS_DOMAIN_ID=24",
+    "ros2 launch course_bringup bringup.launch.py subscriber_reliability:=reliable",
+    "ros2 node list",
+    "ros2 topic list",
+    "ros2 topic info -v /turtle1/cmd_vel",
+    "ros2 topic info -v /robot_a/sensor_pose",
+    "timeout 5 ros2 topic echo --qos-reliability reliable /robot_a/sensor_pose",
+    "ros2 launch course_bringup bringup.launch.py record:=true bag_dir:=bags/pr05-after",
+    "timeout -s INT 6 ros2 topic hz /robot_a/sensor_pose",
+    "ros2 bag info bags/pr05-after",
+    "ros2 run course_bringup sensor_listener --ros-args -r __ns:=/robot_a -p reliability:=reliable",
+    "ros2 bag play bags/pr05-after",
+    "ros2 bag play bags/pr05-after --qos-profile-overrides-path src/course_bringup/config/qos-overrides.yaml"
+  ],
+  "tests": [
+    {"name": "colcon build: patrol, turtle_bringup, course_bringup", "status": "passed"},
+    {"name": "colcon test patrol и course_bringup: 40 тестов, 1 skipped (ament copyright)", "status": "passed"},
+    {"name": "Launch-тест: доставка best_effort в /robot_a/sensor_pose и чистое завершение процессов", "status": "passed"},
+    {"name": "Полные имена: ноды в /robot_a, patrol публикует в /turtle1/cmd_vel", "status": "passed"},
+    {"name": "reliable-подписчик против best_effort издателя: топик виден, 0 сообщений, предупреждение RELIABILITY", "status": "passed"},
+    {"name": "best_effort-подписчик: 125 сообщений за 2 с, ros2 topic hz около 62.5 Гц", "status": "passed"},
+    {"name": "Запись MCAP: 5915 сообщений /robot_a/sensor_pose, offered QoS best_effort", "status": "passed"},
+    {"name": "Повтор без overrides: reliable-подписчик получил 0 сообщений", "status": "passed"},
+    {"name": "Повтор с qos-overrides.yaml: reliable-подписчик получил 5915 из 5915", "status": "passed"},
+    {"name": "Ноды завершаются с кодом 0 при Ctrl+C (process has finished cleanly)", "status": "passed"},
+    {"name": "GitHub Actions", "status": "skipped"}
+  ],
+  "defect": {
+    "reproducer": "ros2 launch course_bringup bringup.launch.py subscriber_reliability:=reliable: топик /robot_a/sensor_pose виден, ros2 topic info -v показывает издателя pose_relay с BEST_EFFORT и подписчика sensor_listener с RELIABLE; sensor_listener пишет Incompatible QoS ... policy RELIABILITY и received 0 messages на протяжении всего запуска; ros2 topic echo --qos-reliability reliable за 5 с не получил ни одного сообщения. При повторе записи bags/pr05-after без overrides reliable-подписчик также получил 0 сообщений.",
+    "root_cause": "RELIABLE-подписка требует гарантированной доставки, а издатель предлагает только BEST_EFFORT; профили несовместимы по политике RELIABILITY, поэтому DDS не сопоставляет конечные точки и не передаёт данные, хотя имя и тип топика совпадают. ros2 bag play по умолчанию повторяет записанный offered QoS (best_effort), поэтому при повторе ошибка сохраняется.",
+    "proof_after": "С subscriber_reliability:=best_effort sensor_listener получает 125 сообщений за каждые 2 с, ros2 topic hz показывает около 62.5 Гц; запись bags/pr05-after содержит 5915 сообщений. Повтор с --qos-profile-overrides-path config/qos-overrides.yaml публикует /robot_a/sensor_pose как reliable, и reliable sensor_listener получил 5915 сообщений, ровно столько, сколько в записи."
+  },
+  "claims": {
+    "public_tests_passed": true,
+    "defect_reproduced": true,
+    "defect_fixed": true,
+    "replay_verified": true
+  },
+  "time": {
+    "contact_academic_hours": 1,
+    "self_study_hours": 1
+  },
+  "notes": [
+    "Время работы сообщено студентом: 1 академический час на занятии и 1 час самостоятельной работы.",
+    "Эксперименты с launch, QoS, записью и повтором выполнил студент; выводы терминалов сохранены в evidence/pr05/raw и собраны в qos-before.txt и qos-after.txt.",
+    "Сборку, unit- и launch-тесты запускал агент локально; launch-тест поднимает turtlesim без GUI.",
+    "Данные «до» и «после» на живом потоке получены в разных запусках; повтор выполнялся при остановленной живой системе.",
+    "Отчёт фиксируется отдельным коммитом после коммита реализации."
+  ],
+  "ai_used": true
+}

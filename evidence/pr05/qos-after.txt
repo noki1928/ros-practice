@@ -1,0 +1,223 @@
+# PR05 — QoS после исправления: subscriber_reliability:=best_effort на живом потоке, reliable при повторе с overrides
+# Запуск студента, ROS 2 Lyrical, ROS_DOMAIN_ID=24. Сырые логи: raw/launch-after.log, raw/after-info.txt, raw/bag-info.txt, raw/replay-after.log
+
+## 1. Живой поток с записью
+$ ros2 launch course_bringup bringup.launch.py record:=true bag_dir:=bags/pr05-after
+[INFO] [launch]: All log files can be found below /home/pavel/.ros/log/2026-10-26-00-07-00-437374-mx-427923
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [launch.user]: namespace=robot_a record=true subscriber_reliability=best_effort
+[INFO] [launch.user]: Recording /robot_a/sensor_pose to bags/pr05-after
+[INFO] [turtlesim_node-1]: process started with pid [427951]
+[INFO] [patrol-2]: process started with pid [427953]
+[INFO] [pose_relay-3]: process started with pid [427955]
+[INFO] [sensor_listener-4]: process started with pid [427957]
+[INFO] [bag_record-5]: process started with pid [427959]
+[turtlesim_node-1] [INFO] [1792948020.786946362] [turtlesim]: Starting turtlesim with node name /turtlesim
+[turtlesim_node-1] [INFO] [1792948020.812459273] [turtlesim]: Spawning turtle [turtle1] at x=[5,544445], y=[5,544445], theta=[0,000000]
+[sensor_listener-4] [INFO] [1792948021.432945172] [robot_a.sensor_listener]: Listening on /robot_a/sensor_pose with best_effort reliability
+[pose_relay-3] [INFO] [1792948021.435678780] [robot_a.pose_relay]: Relaying /turtle1/pose to /robot_a/sensor_pose with best_effort reliability
+[bag_record-5] stdin is not a terminal device. Keyboard handling disabled.[INFO] [1792948022.017031566] [rosbag2_recorder]: Press SPACE for pausing/resuming
+[bag_record-5] [INFO] [1792948022.017108180] [rosbag2_recorder]: Event publisher thread: Started
+[bag_record-5] [INFO] [1792948022.037532617] [rosbag2_recorder]: Starting recording to 'bags/pr05-after'
+[bag_record-5] [WARN] [1792948022.037630393] [rosbag2_recorder]: No input serialization format specified, using default rmw serialization format: 'cdr'.
+[bag_record-5] [INFO] [1792948022.042218743] [rosbag2_recorder]: Listening for topics...
+[bag_record-5] [INFO] [1792948022.042294100] [rosbag2_recorder]: Recording...
+[bag_record-5] [INFO] [1792948022.042395508] [rosbag2_recorder]: Topics discovery started.
+[bag_record-5] [INFO] [1792948022.139445349] [rosbag2_recorder]: Subscribed to topic '/robot_a/sensor_pose'
+[bag_record-5] [INFO] [1792948022.139549201] [rosbag2_recorder]: All requested topics are subscribed. Stopping discovery...
+[bag_record-5] [INFO] [1792948022.139582585] [rosbag2_recorder]: Topics discovery stopped.
+[sensor_listener-4] [INFO] [1792948023.379306411] [robot_a.sensor_listener]: received 125 messages in period, 125 total
+[sensor_listener-4] [INFO] [1792948025.379264703] [robot_a.sensor_listener]: received 125 messages in period, 250 total
+[sensor_listener-4] [INFO] [1792948027.379205954] [robot_a.sensor_listener]: received 125 messages in period, 375 total
+[sensor_listener-4] [INFO] [1792948029.379511351] [robot_a.sensor_listener]: received 125 messages in period, 500 total
+[sensor_listener-4] [INFO] [1792948031.379327588] [robot_a.sensor_listener]: received 125 messages in period, 625 total
+[sensor_listener-4] [INFO] [1792948033.379394970] [robot_a.sensor_listener]: received 125 messages in period, 750 total
+[sensor_listener-4] [INFO] [1792948035.379183760] [robot_a.sensor_listener]: received 125 messages in period, 875 total
+[sensor_listener-4] [INFO] [1792948037.379909734] [robot_a.sensor_listener]: received 125 messages in period, 1000 total
+[sensor_listener-4] [INFO] [1792948039.379144623] [robot_a.sensor_listener]: received 125 messages in period, 1125 total
+[sensor_listener-4] [INFO] [1792948041.379544374] [robot_a.sensor_listener]: received 125 messages in period, 1250 total
+[sensor_listener-4] [INFO] [1792948043.379353557] [robot_a.sensor_listener]: received 125 messages in period, 1375 total
+[sensor_listener-4] [INFO] [1792948045.379623615] [robot_a.sensor_listener]: received 125 messages in period, 1500 total
+[sensor_listener-4] [INFO] [1792948047.379250027] [robot_a.sensor_listener]: received 125 messages in period, 1625 total
+[sensor_listener-4] [INFO] [1792948049.379354913] [robot_a.sensor_listener]: received 125 messages in period, 1750 total
+[sensor_listener-4] [INFO] [1792948051.379486758] [robot_a.sensor_listener]: received 125 messages in period, 1875 total
+[sensor_listener-4] [INFO] [1792948053.379575301] [robot_a.sensor_listener]: received 125 messages in period, 2000 total
+[sensor_listener-4] [INFO] [1792948055.379231535] [robot_a.sensor_listener]: received 125 messages in period, 2125 total
+[sensor_listener-4] [INFO] [1792948057.379511930] [robot_a.sensor_listener]: received 125 messages in period, 2250 total
+[sensor_listener-4] [INFO] [1792948059.379678205] [robot_a.sensor_listener]: received 125 messages in period, 2375 total
+[sensor_listener-4] [INFO] [1792948061.379527337] [robot_a.sensor_listener]: received 125 messages in period, 2500 total
+[sensor_listener-4] [INFO] [1792948063.379258230] [robot_a.sensor_listener]: received 125 messages in period, 2625 total
+[sensor_listener-4] [INFO] [1792948065.379506218] [robot_a.sensor_listener]: received 125 messages in period, 2750 total
+[sensor_listener-4] [INFO] [1792948067.379243606] [robot_a.sensor_listener]: received 125 messages in period, 2875 total
+[sensor_listener-4] [INFO] [1792948069.379627992] [robot_a.sensor_listener]: received 125 messages in period, 3000 total
+[sensor_listener-4] [INFO] [1792948071.379150762] [robot_a.sensor_listener]: received 125 messages in period, 3125 total
+[sensor_listener-4] [INFO] [1792948073.379604150] [robot_a.sensor_listener]: received 125 messages in period, 3250 total
+[sensor_listener-4] [INFO] [1792948075.379513763] [robot_a.sensor_listener]: received 125 messages in period, 3375 total
+[sensor_listener-4] [INFO] [1792948077.379075713] [robot_a.sensor_listener]: received 125 messages in period, 3500 total
+[sensor_listener-4] [INFO] [1792948079.379294927] [robot_a.sensor_listener]: received 125 messages in period, 3625 total
+[sensor_listener-4] [INFO] [1792948081.379173951] [robot_a.sensor_listener]: received 125 messages in period, 3750 total
+[sensor_listener-4] [INFO] [1792948083.379505747] [robot_a.sensor_listener]: received 125 messages in period, 3875 total
+[sensor_listener-4] [INFO] [1792948085.379067767] [robot_a.sensor_listener]: received 125 messages in period, 4000 total
+[sensor_listener-4] [INFO] [1792948087.379396560] [robot_a.sensor_listener]: received 125 messages in period, 4125 total
+[sensor_listener-4] [INFO] [1792948089.379329989] [robot_a.sensor_listener]: received 125 messages in period, 4250 total
+[sensor_listener-4] [INFO] [1792948091.379267818] [robot_a.sensor_listener]: received 125 messages in period, 4375 total
+[sensor_listener-4] [INFO] [1792948093.379146283] [robot_a.sensor_listener]: received 125 messages in period, 4500 total
+[sensor_listener-4] [INFO] [1792948095.379290768] [robot_a.sensor_listener]: received 125 messages in period, 4625 total
+[sensor_listener-4] [INFO] [1792948097.379176776] [robot_a.sensor_listener]: received 125 messages in period, 4750 total
+[sensor_listener-4] [INFO] [1792948099.379323845] [robot_a.sensor_listener]: received 125 messages in period, 4875 total
+[sensor_listener-4] [INFO] [1792948101.379631686] [robot_a.sensor_listener]: received 125 messages in period, 5000 total
+[sensor_listener-4] [INFO] [1792948103.379016662] [robot_a.sensor_listener]: received 125 messages in period, 5125 total
+[sensor_listener-4] [INFO] [1792948105.379600161] [robot_a.sensor_listener]: received 125 messages in period, 5250 total
+[sensor_listener-4] [INFO] [1792948107.379285938] [robot_a.sensor_listener]: received 125 messages in period, 5375 total
+[sensor_listener-4] [INFO] [1792948109.379353809] [robot_a.sensor_listener]: received 125 messages in period, 5500 total
+[sensor_listener-4] [INFO] [1792948111.379378449] [robot_a.sensor_listener]: received 125 messages in period, 5625 total
+[sensor_listener-4] [INFO] [1792948113.379265853] [robot_a.sensor_listener]: received 125 messages in period, 5750 total
+[sensor_listener-4] [INFO] [1792948115.379154305] [robot_a.sensor_listener]: received 125 messages in period, 5875 total
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[turtlesim_node-1] [INFO] [1792948116.776140761] [rclcpp]: signal_handler(signum=2)
+[bag_record-5] [INFO] [1792948116.777740796] [rosbag2_cpp]: Writing remaining messages from cache to the bag. It may take a while
+[bag_record-5] [INFO] [1792948116.783193836] [rosbag2_recorder]: Recording stopped
+[bag_record-5] [INFO] [1792948116.785583971] [rosbag2_recorder]: Event publisher thread: Exited
+[INFO] [turtlesim_node-1]: process has finished cleanly [pid 427951]
+[INFO] [pose_relay-3]: process has finished cleanly [pid 427955]
+[INFO] [patrol-2]: process has finished cleanly [pid 427953]
+[INFO] [sensor_listener-4]: process has finished cleanly [pid 427957]
+[INFO] [bag_record-5]: process has finished cleanly [pid 427959]
+
+## 2. Конечные точки и частота
+$ ros2 topic info -v /robot_a/sensor_pose; timeout -s INT 6 ros2 topic hz /robot_a/sensor_pose
+Type: turtlesim_msgs/msg/Pose
+
+Publisher count: 1
+
+Node name: pose_relay
+Node namespace: /robot_a
+Topic type: turtlesim_msgs/msg/Pose
+Topic type hash: RIHS01_37b07ace09a0ed2c5b774b1410dec972dfd1d292de5656ebc2b075ac646e09c8
+Endpoint type: PUBLISHER
+GID: 01.0f.59.ec.b3.87.2f.74.00.00.00.00.00.00.13.03
+QoS profile:
+  Reliability: BEST_EFFORT
+  History (Depth): KEEP_LAST (10)
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+Subscription count: 2
+
+Node name: sensor_listener
+Node namespace: /robot_a
+Topic type: turtlesim_msgs/msg/Pose
+Topic type hash: RIHS01_37b07ace09a0ed2c5b774b1410dec972dfd1d292de5656ebc2b075ac646e09c8
+Endpoint type: SUBSCRIPTION
+GID: 01.0f.59.ec.b5.87.9b.2a.00.00.00.00.00.00.13.04
+QoS profile:
+  Reliability: BEST_EFFORT
+  History (Depth): KEEP_LAST (10)
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+Node name: rosbag2_recorder
+Node namespace: /
+Topic type: turtlesim_msgs/msg/Pose
+Topic type hash: RIHS01_37b07ace09a0ed2c5b774b1410dec972dfd1d292de5656ebc2b075ac646e09c8
+Endpoint type: SUBSCRIPTION
+GID: 01.0f.59.ec.b7.87.e6.70.00.00.00.00.00.00.26.04
+QoS profile:
+  Reliability: BEST_EFFORT
+  History (Depth): KEEP_LAST (10)
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+average rate: 62.512
+	min: 0.015s max: 0.017s std dev: 0.00051s window: 62
+average rate: 62.503
+	min: 0.015s max: 0.017s std dev: 0.00049s window: 124
+average rate: 62.516
+	min: 0.015s max: 0.017s std dev: 0.00051s window: 187
+average rate: 62.495
+	min: 0.015s max: 0.017s std dev: 0.00053s window: 249
+
+## 3. Запись
+$ ros2 bag info bags/pr05-after
+
+Files:             0_pr05-after_2026_10_26-00_07_02.mcap
+Bag size:          414.9 KiB
+Storage id:        mcap
+ROS Distro:        lyrical
+Duration:          94.624730628s
+Start:             Oct 26 2026 00:07:02.149290558 (1792948022.149290558)
+End:               Oct 26 2026 00:08:36.774021186 (1792948116.774021186)
+Messages:          5915
+Topic information: Topic: /robot_a/sensor_pose | Type: turtlesim_msgs/msg/Pose | Count: 5915 | Serialization Format: cdr
+Services:          0
+Service information: 
+Actions:           0
+Action information: 
+
+## 4. Повтор записи с config/qos-overrides.yaml: reliable sensor_listener, живая система остановлена
+$ ros2 run course_bringup sensor_listener --ros-args -r __ns:=/robot_a -p reliability:=reliable
+$ ros2 bag play bags/pr05-after --qos-profile-overrides-path src/course_bringup/config/qos-overrides.yaml
+[INFO] [1792948320.089921148] [robot_a.sensor_listener]: Listening on /robot_a/sensor_pose with reliable reliability
+[INFO] [1792948322.036232107] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948324.036080081] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948326.036046153] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948328.036087025] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948330.036109947] [robot_a.sensor_listener]: received 123 messages in period, 123 total
+[INFO] [1792948332.036106610] [robot_a.sensor_listener]: received 125 messages in period, 248 total
+[INFO] [1792948334.036312024] [robot_a.sensor_listener]: received 125 messages in period, 373 total
+[INFO] [1792948336.036093300] [robot_a.sensor_listener]: received 125 messages in period, 498 total
+[INFO] [1792948338.036352002] [robot_a.sensor_listener]: received 125 messages in period, 623 total
+[INFO] [1792948340.036287345] [robot_a.sensor_listener]: received 125 messages in period, 748 total
+[INFO] [1792948342.036381853] [robot_a.sensor_listener]: received 125 messages in period, 873 total
+[INFO] [1792948344.036125346] [robot_a.sensor_listener]: received 125 messages in period, 998 total
+[INFO] [1792948346.036163354] [robot_a.sensor_listener]: received 125 messages in period, 1123 total
+[INFO] [1792948348.035985067] [robot_a.sensor_listener]: received 125 messages in period, 1248 total
+[INFO] [1792948350.035970904] [robot_a.sensor_listener]: received 125 messages in period, 1373 total
+[INFO] [1792948352.036339186] [robot_a.sensor_listener]: received 125 messages in period, 1498 total
+[INFO] [1792948354.036306795] [robot_a.sensor_listener]: received 125 messages in period, 1623 total
+[INFO] [1792948356.036091353] [robot_a.sensor_listener]: received 125 messages in period, 1748 total
+[INFO] [1792948358.036351243] [robot_a.sensor_listener]: received 125 messages in period, 1873 total
+[INFO] [1792948360.036372349] [robot_a.sensor_listener]: received 125 messages in period, 1998 total
+[INFO] [1792948362.036119753] [robot_a.sensor_listener]: received 125 messages in period, 2123 total
+[INFO] [1792948364.036090714] [robot_a.sensor_listener]: received 125 messages in period, 2248 total
+[INFO] [1792948366.036142131] [robot_a.sensor_listener]: received 125 messages in period, 2373 total
+[INFO] [1792948368.036266741] [robot_a.sensor_listener]: received 125 messages in period, 2498 total
+[INFO] [1792948370.036695922] [robot_a.sensor_listener]: received 125 messages in period, 2623 total
+[INFO] [1792948372.036087840] [robot_a.sensor_listener]: received 125 messages in period, 2748 total
+[INFO] [1792948374.036071094] [robot_a.sensor_listener]: received 125 messages in period, 2873 total
+[INFO] [1792948376.036302838] [robot_a.sensor_listener]: received 125 messages in period, 2998 total
+[INFO] [1792948378.036269333] [robot_a.sensor_listener]: received 125 messages in period, 3123 total
+[INFO] [1792948380.036294714] [robot_a.sensor_listener]: received 125 messages in period, 3248 total
+[INFO] [1792948382.036116931] [robot_a.sensor_listener]: received 125 messages in period, 3373 total
+[INFO] [1792948384.036174019] [robot_a.sensor_listener]: received 125 messages in period, 3498 total
+[INFO] [1792948386.036061815] [robot_a.sensor_listener]: received 125 messages in period, 3623 total
+[INFO] [1792948388.036154382] [robot_a.sensor_listener]: received 125 messages in period, 3748 total
+[INFO] [1792948390.036039175] [robot_a.sensor_listener]: received 125 messages in period, 3873 total
+[INFO] [1792948392.036133279] [robot_a.sensor_listener]: received 125 messages in period, 3998 total
+[INFO] [1792948394.036021564] [robot_a.sensor_listener]: received 125 messages in period, 4123 total
+[INFO] [1792948396.036065732] [robot_a.sensor_listener]: received 125 messages in period, 4248 total
+[INFO] [1792948398.036219898] [robot_a.sensor_listener]: received 125 messages in period, 4373 total
+[INFO] [1792948400.036143452] [robot_a.sensor_listener]: received 125 messages in period, 4498 total
+[INFO] [1792948402.036250755] [robot_a.sensor_listener]: received 125 messages in period, 4623 total
+[INFO] [1792948404.035949215] [robot_a.sensor_listener]: received 125 messages in period, 4748 total
+[INFO] [1792948406.036002323] [robot_a.sensor_listener]: received 125 messages in period, 4873 total
+[INFO] [1792948408.036365031] [robot_a.sensor_listener]: received 125 messages in period, 4998 total
+[INFO] [1792948410.036673753] [robot_a.sensor_listener]: received 125 messages in period, 5123 total
+[INFO] [1792948412.036077139] [robot_a.sensor_listener]: received 125 messages in period, 5248 total
+[INFO] [1792948414.036330547] [robot_a.sensor_listener]: received 125 messages in period, 5373 total
+[INFO] [1792948416.036356417] [robot_a.sensor_listener]: received 125 messages in period, 5498 total
+[INFO] [1792948418.036052293] [robot_a.sensor_listener]: received 125 messages in period, 5623 total
+[INFO] [1792948420.036122651] [robot_a.sensor_listener]: received 125 messages in period, 5748 total
+[INFO] [1792948422.036353292] [robot_a.sensor_listener]: received 125 messages in period, 5873 total
+[INFO] [1792948424.036350108] [robot_a.sensor_listener]: received 42 messages in period, 5915 total
+[INFO] [1792948426.036219676] [robot_a.sensor_listener]: received 0 messages in period, 5915 total
+[ros2run]: Received signal:  Interrupt

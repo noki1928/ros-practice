@@ -1,0 +1,43 @@
+[INFO] [launch]: All log files can be found below /home/pavel/.ros/log/2026-10-26-00-05-54-871774-mx-427182
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [launch.user]: namespace=robot_a record=false subscriber_reliability=reliable
+[INFO] [turtlesim_node-1]: process started with pid [427211]
+[INFO] [patrol-2]: process started with pid [427213]
+[INFO] [pose_relay-3]: process started with pid [427215]
+[INFO] [sensor_listener-4]: process started with pid [427217]
+[turtlesim_node-1] [INFO] [1792947955.261731884] [turtlesim]: Starting turtlesim with node name /turtlesim
+[turtlesim_node-1] [INFO] [1792947955.288484875] [turtlesim]: Spawning turtle [turtle1] at x=[5,544445], y=[5,544445], theta=[0,000000]
+[sensor_listener-4] [INFO] [1792947955.826493333] [robot_a.sensor_listener]: Listening on /robot_a/sensor_pose with reliable reliability
+[pose_relay-3] [INFO] [1792947955.837330131] [robot_a.pose_relay]: Relaying /turtle1/pose to /robot_a/sensor_pose with best_effort reliability
+[sensor_listener-4] [WARN] [1792947955.847577269] [robot_a.sensor_listener]: Incompatible QoS with publisher on /robot_a/sensor_pose: policy RELIABILITY, total 1
+[pose_relay-3] [WARN] [1792947955.847636633] [robot_a.pose_relay]: New subscription discovered on topic 'sensor_pose', requesting incompatible QoS. No messages will be sent to it. Last incompatible policy: RELIABILITY
+[sensor_listener-4] [INFO] [1792947957.773889113] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947959.773936242] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947961.773705127] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947963.773546577] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947965.773648949] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947967.773528322] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947969.773771561] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947971.773667276] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947973.773697992] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947975.773699166] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947977.773800700] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947979.773724072] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947981.776348227] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[pose_relay-3] [WARN] [1792947982.739208866] [robot_a.pose_relay]: New subscription discovered on topic 'sensor_pose', requesting incompatible QoS. No messages will be sent to it. Last incompatible policy: RELIABILITY
+[sensor_listener-4] [INFO] [1792947983.773677950] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947985.773639175] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947987.773663257] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947989.773741185] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947991.773756396] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947993.773939783] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947995.773724452] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947997.773932213] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792947999.773676096] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[sensor_listener-4] [INFO] [1792948001.773955163] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[turtlesim_node-1] [INFO] [1792948003.686271275] [rclcpp]: signal_handler(signum=2)
+[INFO] [turtlesim_node-1]: process has finished cleanly [pid 427211]
+[INFO] [sensor_listener-4]: process has finished cleanly [pid 427217]
+[INFO] [pose_relay-3]: process has finished cleanly [pid 427215]
+[INFO] [patrol-2]: process has finished cleanly [pid 427213]

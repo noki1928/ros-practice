@@ -1,0 +1,57 @@
+[INFO] [1792948209.822583482] [robot_a.sensor_listener]: Listening on /robot_a/sensor_pose with reliable reliability
+[WARN] [1792948210.176294491] [robot_a.sensor_listener]: Incompatible QoS with publisher on /robot_a/sensor_pose: policy RELIABILITY, total 1
+[INFO] [1792948211.771343799] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948213.771469666] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948215.771677873] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[WARN] [1792948217.555931405] [robot_a.sensor_listener]: Incompatible QoS with publisher on /robot_a/sensor_pose: policy RELIABILITY, total 2
+[INFO] [1792948217.771701285] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948219.771204947] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948221.771213901] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948223.771234449] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948225.771243892] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948227.771228682] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948229.771213891] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948231.771715217] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948233.771463389] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948235.771646594] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948237.771662183] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948239.771349315] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948241.771416027] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948243.771723757] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948245.771652884] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948247.771401545] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948249.771458549] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948251.771440266] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948253.771549022] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948255.771406354] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948257.771354757] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948259.771675337] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948261.771634775] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948263.771424851] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948265.771539333] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948267.771441223] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948269.771439422] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948271.771455849] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948273.771451953] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948275.771368858] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948277.771353159] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948279.771434747] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948281.771715728] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948283.771677471] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948285.771369841] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948287.771704878] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948289.771611028] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948291.771729352] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948293.771860526] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948295.771806415] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948297.771686864] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948299.771489511] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948301.771777825] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948303.771361873] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948305.771775969] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948307.771711103] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948309.771714540] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948311.771688295] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948313.771684957] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[INFO] [1792948315.771387733] [robot_a.sensor_listener]: received 0 messages in period, 0 total
+[ros2run]: Received signal:  Interrupt
