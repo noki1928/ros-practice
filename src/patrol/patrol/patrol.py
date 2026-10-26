@@ -160,8 +160,10 @@ def main(args=None) -> None:
         # second SIGINT so it does not interrupt cleanup.
         signal.signal(signal.SIGINT, signal.SIG_IGN)
     finally:
-        node.destroy_node()
+        # Shutting down first stops the global executor, which releases the
+        # node handles; otherwise destroy_node() may wait for them forever.
         rclpy.try_shutdown()
+        node.destroy_node()
 
 
 if __name__ == '__main__':
