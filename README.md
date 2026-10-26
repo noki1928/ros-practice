@@ -217,3 +217,34 @@ ros2 bag play bags/pr05-after \
 и от терминала, и от `ros2 launch`. Launch-тест `test_bringup_launch.py`
 поднимает систему без GUI (`QT_QPA_PLATFORM=offscreen`), ждёт доставки
 `best_effort` и проверяет коды завершения процессов.
+
+## PR06: Модель робота, tf2 и QoS преобразований
+
+Пакет `src/course_description` описывает машину с рулевой трапецией
+(Ackermann) в `urdf/vehicle.urdf.xacro`. Размеры взяты из
+`models/course_ackermann/model.sdf` course kit `v1-w07`; единицы СИ, оси по
+REP-103. Колёсная база, колея, радиус колеса, размеры кузова, массы и
+крепления датчиков заданы свойствами Xacro; инерция кузова, колёс и датчиков
+вычисляется макросами по массе и габаритам.
+
+Дерево: `base_link` → `front_*_knuckle` (revolute, руль) → `front_*_wheel`
+(continuous), `base_link` → `rear_*_wheel` (continuous), `base_link` →
+`camera_link` / `lidar_link` / `imu_link` (fixed, `0.28 0 0.38`). Единственный
+издатель всех преобразований — `robot_state_publisher`: fixed-соединения в
+`/tf_static`, подвижные — в `/tf` только при наличии `joint_states`.
+
+```bash
+ros2 launch course_description display.launch.py
+xacro src/course_description/urdf/vehicle.urdf.xacro > /tmp/vehicle.urdf
+check_urdf /tmp/vehicle.urdf
+ros2 run tf2_ros tf2_echo base_link lidar_link
+ros2 run tf2_tools view_frames
+```
+
+Тесты `test_model.py` разворачивают Xacro и проверяют единственный корень,
+связность без циклов, ожидаемых родителей, позы датчиков и колёс в
+`base_link`, радиус колеса, наличие `visual`/`collision`, физичность инерции и
+прохождение `check_urdf`.
+
+Для `xacro` в сборке ROS из исходников: пакет `ros/xacro` (ветка `ros2`)
+собран в `~/ros2_lyrical` через `build_ros.sh --packages-select xacro`.

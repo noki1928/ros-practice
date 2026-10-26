@@ -1,4 +1,4 @@
-name: PR05 Checks
+name: PR06 Checks
 
 on: [push, pull_request]
 
@@ -6,9 +6,9 @@ permissions:
   contents: read
 
 env:
-  COURSE_KIT_ARCHIVE: robotics-course-kit-v1-w05-bca214e3de6f.tar.gz
-  COURSE_KIT_URL: https://ros.lms.ci.nsu.ru/downloads/robotics-course-kit-v1-w05-bca214e3de6f.tar.gz
-  COURSE_KIT_SHA256: bca214e3de6f90f9513049dfa0f36fee65ad834da502dc3f3f8fb443517b5197
+  COURSE_KIT_ARCHIVE: robotics-course-kit-v1-w07-9b7fdd5424d3.tar.gz
+  COURSE_KIT_URL: https://ros.lms.ci.nsu.ru/downloads/robotics-course-kit-v1-w07-9b7fdd5424d3.tar.gz
+  COURSE_KIT_SHA256: 9b7fdd5424d3d97e47d51dbe23064934585e62135dc2902844dd679529bda929
 
 jobs:
   validate:
@@ -28,9 +28,12 @@ jobs:
           test -f "$(ros2 pkg prefix turtle_bringup)/share/turtle_bringup/launch/sim.launch.py"
           test -f "$(ros2 pkg prefix course_bringup)/share/course_bringup/launch/bringup.launch.py"
           test -f "$(ros2 pkg prefix course_bringup)/share/course_bringup/config/qos-overrides.yaml"
+          xacro "$(ros2 pkg prefix course_description)/share/course_description/urdf/vehicle.urdf.xacro" > /tmp/vehicle.urdf
+          check_urdf /tmp/vehicle.urdf
           python3 -m py_compile src/turtle_bringup/launch/sim.launch.py src/patrol/patrol/patrol.py \
-            src/course_bringup/launch/bringup.launch.py src/course_bringup/course_bringup/*.py
-          colcon test --packages-select patrol course_bringup --event-handlers console_direct+
+            src/course_bringup/launch/bringup.launch.py src/course_bringup/course_bringup/*.py \
+            src/course_description/launch/display.launch.py src/course_description/course_description/*.py
+          colcon test --packages-select patrol course_bringup course_description --event-handlers console_direct+
           colcon test-result --verbose
       - name: Save test results
         if: always()
@@ -40,6 +43,7 @@ jobs:
           path: |
             build/patrol/pytest.xml
             build/course_bringup/pytest.xml
+            build/course_description/pytest.xml
       - name: Download course kit
         shell: bash
         run: |
@@ -50,4 +54,4 @@ jobs:
       - name: Check PR evidence
         shell: bash
         run: |
-          python3 .course-kit/v1/tools/check_practice.py PR05 --submission .
+          python3 .course-kit/v1/tools/check_practice.py PR06 --submission .
