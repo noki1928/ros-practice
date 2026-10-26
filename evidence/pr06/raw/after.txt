@@ -1,0 +1,32 @@
+robot name is: course_ackermann
+---------- Successfully Parsed XML ---------------
+root Link: base_link has 7 child(ren)
+    child(1):  camera_link
+    child(2):  front_left_knuckle
+        child(1):  front_left_wheel
+    child(3):  front_right_knuckle
+        child(1):  front_right_wheel
+    child(4):  imu_link
+    child(5):  lidar_link
+    child(6):  rear_left_wheel
+    child(7):  rear_right_wheel
+[INFO] [1792992490.453896700] [tf2_echo]: Waiting for transform base_link ->  lidar_link: Invalid frame ID "base_link" passed to canTransform argument target_frame - frame does not exist
+[INFO] [1792992492.411531632] [tf2_echo]: Waiting for transform base_link ->  lidar_link: Invalid frame ID "base_link" passed to canTransform argument target_frame - frame does not exist
+[INFO] [1792992494.411276637] [tf2_echo]: Waiting for transform base_link ->  lidar_link: Invalid frame ID "base_link" passed to canTransform argument target_frame - frame does not exist
+[ros2run]: Received signal:  Terminated
+[INFO] [1792992494.690073381] [rclcpp]: signal_handler(signum=15)
+[INFO] [1792992494.691917511] [rclcpp]: signal_handler(signum=15)
+Starting >>> course_description
+--- stderr: course_description
+
+=============================== warnings summary ===============================
+test/test_flake8.py::test_flake8
+  Warning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+---
+Finished <<< course_description [4.71s]
+
+Summary: 1 package finished [5.11s]
+  1 package had stderr output: course_description
+Summary: 66 tests, 0 errors, 0 failures, 1 skipped

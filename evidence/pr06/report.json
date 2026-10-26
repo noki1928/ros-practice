@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "practice_id": "PR06",
+  "commit": "149786dca26b58585b735252dd1ed6efbfe0d444",
+  "course_kit": {
+    "version": "v1-w07",
+    "archive_sha256": "9b7fdd5424d3d97e47d51dbe23064934585e62135dc2902844dd679529bda929"
+  },
+  "commands": [
+    "colcon build --symlink-install",
+    "export ROS_DOMAIN_ID=24",
+    "ros2 launch course_description display.launch.py",
+    "ros2 topic info /tf_static --verbose",
+    "timeout 4 ros2 topic echo /tf_static --once --qos-durability transient_local --qos-reliability reliable",
+    "timeout 4 ros2 topic echo /tf_static --once --qos-durability volatile --qos-reliability reliable",
+    "ros2 topic info /tf --verbose",
+    "xacro src/course_description/urdf/vehicle.urdf.xacro > /tmp/vehicle.urdf",
+    "check_urdf /tmp/vehicle.urdf",
+    "ros2 run tf2_ros tf2_echo base_link lidar_link",
+    "ros2 run tf2_tools view_frames -o evidence/pr06/raw/frames-after",
+    "colcon test --packages-select course_description",
+    "colcon test-result --verbose",
+    "git checkout 2c8aaf1",
+    "git checkout pr6"
+  ],
+  "tests": [
+    {"name": "colcon build: patrol, turtle_bringup, course_bringup, course_description", "status": "passed"},
+    {"name": "colcon test course_description: 26 тестов (дерево, родители, позы, единицы, инерция, check_urdf, линтеры)", "status": "passed"},
+    {"name": "colcon test patrol, course_bringup, course_description: 66 тестов, 1 skipped (ament copyright)", "status": "passed"},
+    {"name": "check_urdf: один корень base_link, 9 потомков, без циклов", "status": "passed"},
+    {"name": "RViz: модель открыта при Fixed Frame base_link", "status": "passed"},
+    {"name": "/tf_static: RELIABLE, TRANSIENT_LOCAL; поздний transient_local-подписчик получил 3 преобразования (exit=0)", "status": "passed"},
+    {"name": "/tf_static: поздний volatile-подписчик ничего не получил (exit=124)", "status": "passed"},
+    {"name": "Сломанная версия: tf2_echo base_link lidar_link = 0.56 0 0.76, 2 теста падают", "status": "passed"},
+    {"name": "Исправленная версия: tf2_echo base_link lidar_link = 0.28 0 0.38, все тесты проходят", "status": "passed"},
+    {"name": "GitHub Actions", "status": "skipped"}
+  ],
+  "defect": {
+    "reproducer": "Коммит 2c8aaf1: в vehicle.urdf.xacro родителем lidar_link сделан camera_link с тем же смещением 0.28 0 0.38. check_urdf дерево принимает (base_link → camera_link → lidar_link), но tf2_echo base_link lidar_link даёт 0.56 0 0.76, view_frames показывает camera_link → lidar_link, тесты test_expected_parent[lidar_link-base_link] и test_sensor_pose_in_base_link[lidar_link] падают.",
+    "root_cause": "Смещение fixed-соединения задаётся в кадре родителя. При родителе camera_link смещение 0.28 0 0.38 откладывается от камеры, которая сама стоит в 0.28 0 0.38 от base_link, поэтому позы складываются. check_urdf проверяет только структуру дерева, а не смысл родителя и итоговую позу.",
+    "proof_after": "Коммит 149786d возвращает родителя base_link. tf2_echo base_link lidar_link даёт 0.28 0 0.38, view_frames показывает camera_link, imu_link и lidar_link прямо под base_link, check_urdf проходит, все 26 тестов course_description проходят."
+  },
+  "claims": {
+    "public_tests_passed": true,
+    "defect_reproduced": true,
+    "defect_fixed": true
+  },
+  "time": {
+    "contact_academic_hours": 1,
+    "self_study_hours": 1
+  },
+  "notes": [
+    "Время работы сообщено студентом: 1 академический час на занятии и 1 час самостоятельной работы.",
+    "Запуски launch, RViz, tf-qos, tf2_echo, view_frames и тестов до и после дефекта выполнил студент; выводы в evidence/pr06/raw. Первый прогон tf2_echo и view_frames после исправления шёл без robot_state_publisher и повторён (raw/after-tf.txt, raw/frames-after).",
+    "Сборку и полный набор тестов также запускал агент локально.",
+    "Колёса и поворотные кулаки в /tf появляются только при публикации joint_states; в обязательной части её нет.",
+    "Отчёт фиксируется отдельным коммитом после коммита реализации."
+  ],
+  "ai_used": true
+}
