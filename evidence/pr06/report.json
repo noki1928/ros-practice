@@ -33,7 +33,7 @@
     {"name": "/tf_static: поздний volatile-подписчик ничего не получил (exit=124)", "status": "passed"},
     {"name": "Сломанная версия: tf2_echo base_link lidar_link = 0.56 0 0.76, 2 теста падают", "status": "passed"},
     {"name": "Исправленная версия: tf2_echo base_link lidar_link = 0.28 0 0.38, все тесты проходят", "status": "passed"},
-    {"name": "GitHub Actions", "status": "skipped"}
+    {"name": "GitHub Actions: workflow validate, run 40274849033 на коммите d203d75", "status": "passed"}
   ],
   "defect": {
     "reproducer": "Коммит 2c8aaf1: в vehicle.urdf.xacro родителем lidar_link сделан camera_link с тем же смещением 0.28 0 0.38. check_urdf дерево принимает (base_link → camera_link → lidar_link), но tf2_echo base_link lidar_link даёт 0.56 0 0.76, view_frames показывает camera_link → lidar_link, тесты test_expected_parent[lidar_link-base_link] и test_sensor_pose_in_base_link[lidar_link] падают.",
